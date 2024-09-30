@@ -2,7 +2,9 @@ pipeline {
     tools {
         maven 'Maven3.8.7'
     }
-    agent any
+     agent {
+        label 'Agent01'
+    }
     
     stages {
         stage('clone repository from github') {
