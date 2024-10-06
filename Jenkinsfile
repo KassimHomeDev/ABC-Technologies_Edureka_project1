@@ -68,16 +68,16 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            // Clean workspace after every build
-            cleanWs()
-        }
-        success {
-            echo 'Build, Dockerization, and Deployment completed successfully!'
-        }
-        failure {
-            echo 'Build failed. Check logs for details.'
-        }
-    }
+    // post {
+    //     always {
+    //         // Clean workspace after every build
+    //         cleanWs()
+    //     }
+    //     success {
+    //         echo 'Build, Dockerization, and Deployment completed successfully!'
+    //     }
+    //     failure {
+    //         echo 'Build failed. Check logs for details.'
+    //     }
+    // }
 }
