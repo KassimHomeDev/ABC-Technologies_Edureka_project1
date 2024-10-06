@@ -14,7 +14,7 @@ RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.95/bin/apache-tomcat-9.0.
     tar -xvzf /tmp/apache-tomcat.tar.gz -C /usr/local/tomcat --strip-components=1
 
 # Copy the WAR file from your local directory to Tomcat's webapps folder
-COPY *.war /usr/local/tomcat/webapps/
+COPY /target/*.war /usr/local/tomcat/webapps/
 
 # Expose port 8080 for accessing the web application
 EXPOSE 8080
