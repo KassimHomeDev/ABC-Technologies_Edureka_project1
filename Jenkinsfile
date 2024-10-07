@@ -12,11 +12,6 @@ pipeline {
     }
     
     stages {
-        stage('Clone Repository from GitHub') {
-            steps {
-                git branch: 'main', url: 'https://github.com/KassimHomeDev/ABC-Technologies_Edureka_project1.git'
-            }
-        }
 
         stage('Compile') {
             steps {
