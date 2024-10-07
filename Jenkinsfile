@@ -54,8 +54,8 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        docker stop abc-app-container || true
-                        docker rm abc-app-container || true
+                        docker stop ${DOCKER_IMAGE_NAME} || true
+                        docker rm ${DOCKER_IMAGE_NAME} || true
                         docker run -d --name ${DOCKER_IMAGE_NAME} -p 8080:8080 ${DOCKER_IMAGE_NAME}:${DOCKER_TAG}
                     '''
                 }
