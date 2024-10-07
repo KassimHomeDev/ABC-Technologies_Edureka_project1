@@ -6,8 +6,8 @@ pipeline {
         label 'Agent01'
     }
     environment {
-        DOCKER_CREDENTIALS_ID = 'dockerhub-credentials' // Add DockerHub credentials in Jenkins
-        DOCKER_IMAGE_NAME = 'kassimabdi/tomcat-abc-technologies-app' // Replace with your DockerHub repo
+        DOCKER_CREDENTIALS_ID = 'docker_hub_login' //DockerHub credentials in Jenkins
+        DOCKER_IMAGE_NAME = 'kassimabdi/tomcat-abc-technologies-app' // DockerHub repo
         DOCKER_TAG = 'latest'
     }
     
@@ -61,7 +61,7 @@ pipeline {
                     sh '''
                         docker stop abc-app-container || true
                         docker rm abc-app-container || true
-                        docker run -d --name abc-app-container -p 8080:8080 ${DOCKER_IMAGE_NAME}:${DOCKER_TAG}
+                        docker run -d --name ${DOCKER_IMAGE_NAME} -p 8080:8080 ${DOCKER_IMAGE_NAME}:${DOCKER_TAG}
                     '''
                 }
             }
