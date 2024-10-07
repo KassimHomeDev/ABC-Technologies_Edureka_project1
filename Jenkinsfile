@@ -8,6 +8,7 @@ pipeline {
     environment {
         DOCKER_CREDENTIALS_ID = 'docker_hub_login' //DockerHub credentials in Jenkins
         DOCKER_IMAGE_NAME = 'kassimabdi/tomcat-abc-technologies-app' // DockerHub repo
+        DOCKER_CONTAINER_NAME = 'tomcat-abc-technologies-app' // DockerHub repo
         DOCKER_TAG = 'latest'
     }
     
@@ -56,7 +57,7 @@ pipeline {
                     sh '''
                         docker stop ${DOCKER_IMAGE_NAME} || true
                         docker rm ${DOCKER_IMAGE_NAME} || true
-                        docker run -d --name ${DOCKER_IMAGE_NAME} -p 8080:8080 ${DOCKER_IMAGE_NAME}:${DOCKER_TAG}
+                        docker run -d --name ${DOCKER_CONTAINER_NAME} -p 8080:8080 ${DOCKER_IMAGE_NAME}:${DOCKER_TAG}
                     '''
                 }
             }
