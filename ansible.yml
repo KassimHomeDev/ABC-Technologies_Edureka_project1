@@ -1,0 +1,3 @@
+#task1:build Dockerfile
+#task2:push Docker image to Docker hub
+#task3:Deploy Artifact in the k8s
