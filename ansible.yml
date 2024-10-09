@@ -1,3 +1,33 @@
-#task1:build Dockerfile
-#task2:push Docker image to Docker hub
-#task3:Deploy Artifact in the k8s
+---
+- name: first play - Build and Push Docker Image
+  hosts: worker
+  become: yes
+  tasks:
+    # Build Dockerfile
+    - name: Build Docker Image
+      community.docker.docker_image:
+        path: /path/to/your/dockerfile/directory  # Path where Dockerfile is located
+        name: abc-technologie-app  # Image name
+        tag: latest  # Image tag
+        build: true
+
+    # Push Docker image to Docker Hub
+    - name: Push Docker Image to Docker Hub
+      community.docker.docker_image:
+        name: kassimabdi/abc-technologie-app  # Docker Hub repository and image name
+        tag: latest  # Tag to push
+        push: yes
+        source: build
+
+- name: second play - Deploy Artifact to Kubernetes
+  hosts: master
+  become: yes
+  tasks:
+    # Deploy Artifact in Kubernetes
+    - name: Deploy Artifact in Kubernetes
+      kubernetes.core.k8s:
+        state: present
+        definition: "{{ lookup('file', '/path/to/your/kubernetes/deployment.yaml') }}"  # Path to your k8s deployment file
+
+
+
