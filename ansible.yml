@@ -1,6 +1,7 @@
 ---
 - name: first play - Build and Push Docker Image
   hosts: 172.31.82.182
+  gather_facts: false
   become: yes
   tasks:
     # Build Dockerfile
