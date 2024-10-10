@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: abc-tech-service
+spec:
+  type: NodePort  # Exposes the service outside the cluster on a port on each node
+  selector:
+    app: abc-tech-app  # Matches the label of the pods from the Deployment
+  ports:
+    - port: 80  # The service will be accessible on port 80 inside the cluster
+      targetPort: 8080  # The service forwards traffic to the containers on port 8080
+      nodePort: 30007  # NodePort exposes the service on this specific port outside the cluster
