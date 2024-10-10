@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: app-container  # Better naming for clarity
-          image: asue1/abctechnologies:latest  # Always pull the latest image for first-time deployment
+          image: kassimabdi/abc-technologie-app:latest  # Always pull the latest image for first-time deployment
           imagePullPolicy: Always  # Ensures that the latest image is always pulled
           ports:
             - containerPort: 8080  # Expose port 8080 for the application
