@@ -1,6 +1,6 @@
 ---
 - name: first play - Build and Push Docker Image
-  hosts: 172.31.82.182
+  hosts: worker
   gather_facts: false
   become: yes
   tasks:
@@ -21,7 +21,7 @@
         source: build
 
 - name: second play - Deploy Artifact to Kubernetes
-  hosts: 172.31.89.250
+  hosts: master
   become: yes
   tasks:
     # Deploy Artifact in Kubernetes
