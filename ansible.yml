@@ -6,16 +6,16 @@
     # Build Dockerfile
     - name: Build Docker Image
       community.docker.docker_image:
-        path: /path/to/your/dockerfile/directory  # Path where Dockerfile is located
-        name: abc-technologie-app  # Image name
-        tag: latest  # Image tag
+        path: .
+        name: abc-technologie-app
+        tag: latest
         build: true
 
     # Push Docker image to Docker Hub
     - name: Push Docker Image to Docker Hub
       community.docker.docker_image:
-        name: kassimabdi/abc-technologie-app  # Docker Hub repository and image name
-        tag: latest  # Tag to push
+        name: kassimabdi/abc-technologie-app
+        tag: latest
         push: yes
         source: build
 
@@ -27,7 +27,12 @@
     - name: Deploy Artifact in Kubernetes
       kubernetes.core.k8s:
         state: present
-        definition: "{{ lookup('file', '/path/to/your/kubernetes/deployment.yaml') }}"  # Path to your k8s deployment file
+        definition: "{{ lookup('file', 'deployment.yml') }}"  
+    # setup service of the app
+    - name: Deploy Artifact in Kubernetes
+      kubernetes.core.k8s:
+        state: present
+        definition: "{{ lookup('file', 'service.yml') }}"  
 
 
 
