@@ -1,6 +1,6 @@
 ---
 - name: first play - Build and Push Docker Image
-  hosts: worker
+  hosts: localhost
   gather_facts: false
   become: yes
   tasks:
