@@ -20,20 +20,20 @@
         push: yes
         source: build
 
-- name: second play - Deploy Artifact to Kubernetes
-  hosts: master
-  become: yes
-  tasks:
-    # Deploy Artifact in Kubernetes
-    - name: Deploy Artifact in Kubernetes
-      kubernetes.core.k8s:
-        state: present
-        definition: "{{ lookup('file', 'deployment.yml') }}"  
-    # setup service of the app
-    - name: Deploy Artifact in Kubernetes
-      kubernetes.core.k8s:
-        state: present
-        definition: "{{ lookup('file', 'service.yml') }}"  
+# - name: second play - Deploy Artifact to Kubernetes
+#   hosts: master
+#   become: yes
+#   tasks:
+#     # Deploy Artifact in Kubernetes
+#     - name: Deploy Artifact in Kubernetes
+#       kubernetes.core.k8s:
+#         state: present
+#         definition: "{{ lookup('file', 'deployment.yml') }}"  
+#     # setup service of the app
+#     - name: Deploy Artifact in Kubernetes
+#       kubernetes.core.k8s:
+#         state: present
+#         definition: "{{ lookup('file', 'service.yml') }}"  
 
 
 
