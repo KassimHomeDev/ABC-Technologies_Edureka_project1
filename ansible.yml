@@ -9,29 +9,31 @@
         file:
           path: /home/ubuntu/ansiblejob  # Path to the directory where code is copied
           state: absent  # This will remove the directory and its contents
-  tasks:
-    # Task 2: Copy the application code to the worker node
-    - name: Copy application code to the worker
-      copy:
-        src: /var/lib/jenkins/workspace/ABC-technologie-ansible-docker-k8s/ # Local path on your Ansible control node (Jenkins server)
-        dest: /home/ubuntu/ansiblejob # Destination on the worker node
+      # Task 2: Copy the application code to the worker node
+      - name: Copy application code to the worker
+        copy:
+          src: /var/lib/jenkins/workspace/ABC-technologie-ansible-docker-k8s/ # Local path on your Ansible control node (Jenkins server)
+          dest: /home/ubuntu/ansiblejob # Destination on the worker node
+      # # Task 4: Build Docker image on worker
+      # - name: Build Docker Image
+      #   command: docker build -t abc-technologie-app-ansible-docker-k8s:latest /path/on/worker/app/
+      #   timeout: 300  # Ensure task doesn't run longer than 5 minutes
+      #   changed_when: "'Successfully built' in result.stdout"  # Explicit completion
+    # Build Dockerfile
+    - name: Build Docker Image
+      community.docker.docker_image:
+        path: .
+        name: abc-technologie-app-ansible-docker-k8s
+        tag: latest
+        build: true
 
-  # tasks:
-  #   # Build Dockerfile
-  #   - name: Build Docker Image
-  #     community.docker.docker_image:
-  #       path: .
-  #       name: abc-technologie-app-ansible-docker-k8s
-  #       tag: latest
-  #       build: true
-
-  #   # Push Docker image to Docker Hub
-  #   - name: Push Docker Image to Docker Hub
-  #     community.docker.docker_image:
-  #       name: kassimabdi/abc-technologie-app-ansible-docker-k8s
-  #       tag: latest
-  #       push: yes
-  #       source: build
+    # Push Docker image to Docker Hub
+    - name: Push Docker Image to Docker Hub
+      community.docker.docker_image:
+        name: kassimabdi/abc-technologie-app-ansible-docker-k8s
+        tag: latest
+        push: yes
+        source: build
 
 # - name: second play - Deploy Artifact to Kubernetes
 #   hosts: master
