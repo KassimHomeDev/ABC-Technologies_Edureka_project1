@@ -14,12 +14,7 @@
         copy:
           src: /var/lib/jenkins/workspace/ABC-technologie-ansible-docker-k8s/ # Local path on your Ansible control node (Jenkins server)
           dest: /home/ubuntu/ansiblejob # Destination on the worker node
-      # # Task 4: Build Docker image on worker
-      # - name: Build Docker Image
-      #   command: docker build -t abc-technologie-app-ansible-docker-k8s:latest /path/on/worker/app/
-      #   timeout: 300  # Ensure task doesn't run longer than 5 minutes
-      #   changed_when: "'Successfully built' in result.stdout"  # Explicit completion
-      # Build Dockerfile
+      #Task 3: Build Dockerfile
       - name: Build Docker Image
         community.docker.docker_image:
           path:  /home/ubuntu/ansiblejob
