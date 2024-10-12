@@ -16,22 +16,22 @@
         src: /var/lib/jenkins/workspace/ABC-technologie-ansible-docker-k8s/ # Local path on your Ansible control node (Jenkins server)
         dest: /home/ubuntu/ansiblejob # Destination on the worker node
 
-  tasks:
-    # Build Dockerfile
-    - name: Build Docker Image
-      community.docker.docker_image:
-        path: .
-        name: abc-technologie-app-ansible-docker-k8s
-        tag: latest
-        build: true
+  # tasks:
+  #   # Build Dockerfile
+  #   - name: Build Docker Image
+  #     community.docker.docker_image:
+  #       path: .
+  #       name: abc-technologie-app-ansible-docker-k8s
+  #       tag: latest
+  #       build: true
 
-    # Push Docker image to Docker Hub
-    - name: Push Docker Image to Docker Hub
-      community.docker.docker_image:
-        name: kassimabdi/abc-technologie-app-ansible-docker-k8s
-        tag: latest
-        push: yes
-        source: build
+  #   # Push Docker image to Docker Hub
+  #   - name: Push Docker Image to Docker Hub
+  #     community.docker.docker_image:
+  #       name: kassimabdi/abc-technologie-app-ansible-docker-k8s
+  #       tag: latest
+  #       push: yes
+  #       source: build
 
 # - name: second play - Deploy Artifact to Kubernetes
 #   hosts: master
