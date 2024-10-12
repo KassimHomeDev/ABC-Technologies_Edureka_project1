@@ -3,12 +3,12 @@
   hosts: worker
   gather_facts: false
   become: yes
-tasks:
-    # Task 1: Cleanup any existing code from the previous deployment
-    - name: Remove old application code
-      file:
-        path: /home/ubuntu/ansiblejob  # Path to the directory where code is copied
-        state: absent  # This will remove the directory and its contents
+  tasks:
+      # Task 1: Cleanup any existing code from the previous deployment
+      - name: Remove old application code
+        file:
+          path: /home/ubuntu/ansiblejob  # Path to the directory where code is copied
+          state: absent  # This will remove the directory and its contents
   tasks:
     # Task 2: Copy the application code to the worker node
     - name: Copy application code to the worker
