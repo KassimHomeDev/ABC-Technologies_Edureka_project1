@@ -15,12 +15,14 @@
           src: /var/lib/jenkins/workspace/ABC-technologie-ansible-docker-k8s/ # Local path on your Ansible control node (Jenkins server)
           dest: /home/ubuntu/ansiblejob # Destination on the worker node
       #Task 3: Build Dockerfile
-      - name: Build Docker Image
-        community.docker.docker_image:
-          path:  /home/ubuntu/ansiblejob
-          name: abc-technologie-app-ansible-docker-k8s
-          tag: latest
-          build: true
+      # - name: Build Docker Image
+      #   community.docker.docker_image:
+      #     path:  /home/ubuntu/ansiblejob
+      #     name: abc-technologie-app-ansible-docker-k8s
+      #     tag: latest
+      #     build: true
+      - name: Build Docker image using command module
+        command: docker build -t abc-technologie-app-ansible-docker-k8s:latest /home/ubuntu/ansiblejob
 
     # # Push Docker image to Docker Hub
     # - name: Push Docker Image to Docker Hub
