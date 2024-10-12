@@ -1,6 +1,6 @@
 ---
 - name: first play - Build and Push Docker Image
-  hosts: worker
+  hosts: 172.31.82.182
   gather_facts: false
   remote_user: jenkins
   become: yes
