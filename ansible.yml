@@ -2,7 +2,7 @@
 - name: first play - Build and Push Docker Image
   hosts: worker
   gather_facts: false
-  become: non
+  become: no
   tasks:
       # # Task 1: Cleanup any existing code from the previous deployment
       # - name: Remove old application code
