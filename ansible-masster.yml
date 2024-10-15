@@ -4,7 +4,7 @@
   become: no
   tasks:
      - name: Deploy Artifact in Kubernetes
-        kubernetes.core.k8s:
+       kubernetes.core.k8s:
           state: present
           namespace: default  # Specify your Kubernetes namespace
           definition: "{{ lookup('file', 'deployment.yml') }}"
