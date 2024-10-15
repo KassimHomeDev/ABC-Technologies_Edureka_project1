@@ -14,6 +14,9 @@
         copy:
           src: /var/lib/jenkins/workspace/ABC-technologie-ansible-docker-k8s/ # Local path on your Ansible control node (Jenkins server)
           dest: /home/ubuntu/ansiblejob # Destination on the worker node
+      #Task 3 : package the maven project
+      - name:  Package the project as a WAR file using Maven
+        command: mvn package
       #Task 3: Build Dockerfile
       - name: Build Docker image using command module
         command: docker build -t kassimabdi/abc-technologie-app-ansible-docker-k8s:latest /home/ubuntu/ansiblejob
@@ -30,20 +33,13 @@
       - name: Push Docker Image to Docker Hub using command module
         command: docker push kassimabdi/abc-technologie-app-ansible-docker-k8s:latest
 
-# - name: second play - Deploy Artifact to Kubernetes
-#   hosts: master
-#   become: yes
-#   tasks:
-#     # Deploy Artifact in Kubernetes
-#     - name: Deploy Artifact in Kubernetes
-#       kubernetes.core.k8s:
-#         state: present
-#         definition: "{{ lookup('file', 'deployment.yml') }}"  
-#     # setup service of the app
-#     - name: Deploy Artifact in Kubernetes
-#       kubernetes.core.k8s:
-#         state: present
-#         definition: "{{ lookup('file', 'service.yml') }}"  
+- name: second play - Deploy Artifact to Kubernetes
+  hosts: master
+  become: yes
+  tasks:
+    # Deploy Artifact in Kubernetes && # setup service of the app
+    - name: Deploy Artifact in Kubernetes
+      command: kubectl apply -f deployment.yml
 
 
 
