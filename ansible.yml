@@ -17,6 +17,8 @@
       #Task 3 : package the maven project
       - name:  Package the project as a WAR file using Maven
         command: mvn package
+        args:
+          chdir: /home/ubuntu/ansiblejob  # the directory where the Maven project is located
       #Task 3: Build Dockerfile
       - name: Build Docker image using command module
         command: docker build -t kassimabdi/abc-technologie-app-ansible-docker-k8s:latest /home/ubuntu/ansiblejob
