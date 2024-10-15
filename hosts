@@ -1,5 +1,5 @@
 [master]
-172.31.89.250
+localhost ansible_connection=local
 
 [worker]
 172.31.82.182
