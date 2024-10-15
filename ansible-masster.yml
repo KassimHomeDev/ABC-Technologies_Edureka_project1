@@ -1,7 +1,7 @@
 ---
 - name: second play - Deploy Artifact to Kubernetes
   hosts: localhost
-  become: no
+  become: yes
   tasks:
     # - name: Copy the deployment file to /home/ubuntu
     #   copy:
@@ -12,7 +12,7 @@
       kubernetes.core.k8s:
         state: present
         namespace: default  # Specify your Kubernetes namespace
-        definition: "{{ lookup('file', '/home/ubuntu/ansiblejob/deployment.yml') }}"
+        definition: "{{ lookup('file', 'deployment.yml') }}"
 
 
     # - name: Deploy Artifact in Kubernetes
