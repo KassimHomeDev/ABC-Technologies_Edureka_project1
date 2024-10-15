@@ -1,7 +1,7 @@
 <html>
 <body>
 <h2>Welcome to ABC technologies</h2>
-<h3>This is retail portal- - Test if work and show the change on screen</h3>
+<h3>This is retail portal- - Test if work and show the change on screen - it is the last</h3>
 <button name="Add Product" value="Add Product" type="button" onclick="addProduct()">Add Product</button>  
 <script>  
 function addProduct(){  
