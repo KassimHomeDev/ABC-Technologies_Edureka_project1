@@ -19,8 +19,12 @@
         command: mvn package
         args:
           chdir: /home/ubuntu/ansiblejob  # the directory where the Maven project is located
-      #Task 3: Build Dockerfile
-      - name: Build Docker image using command module
+      #Task : Build Dockerfile
+      - name: Delete old Docker image using 
+        command: docker rmi -f abc-technologie-app-ansible-docker-k8s:latest
+        ignore_errors: yes
+      #Task : Build Dockerfile
+      - name: Build Docker image using 
         command: docker build -t kassimabdi/abc-technologie-app-ansible-docker-k8s:latest /home/ubuntu/ansiblejob
 
      
