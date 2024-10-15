@@ -1,7 +1,7 @@
 ---
 - name: second play - Deploy Artifact to Kubernetes
   hosts: master
-  become: yes
+  become: no
   tasks:
     # Deploy Artifact in Kubernetes && setup service of the app
     - name: Deploy Artifact in Kubernetes
