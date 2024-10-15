@@ -1,43 +1,43 @@
 ---
-- name: first play - Copy code and Build 
-  hosts: worker
-  gather_facts: false
-  become: yes
-  tasks:
-      # Task 1: Cleanup any existing code from the previous deployment
-      - name: Remove old application code
-        file:
-          path: /home/ubuntu/ansiblejob  # Path to the directory where code is copied
-          state: absent  # This will remove the directory and its contents
-      # Task 2: Copy the application code to the worker node
-      - name: Copy application code to the worker
-        copy:
-          src: /var/lib/jenkins/workspace/ABC-technologie-ansible-docker-k8s/ # Local path on your Ansible control node (Jenkins server)
-          dest: /home/ubuntu/ansiblejob # Destination on the worker node
-      #Task 3 : package the maven project
-      - name:  Package the project as a WAR file using Maven
-        command: mvn package
-        args:
-          chdir: /home/ubuntu/ansiblejob  # the directory where the Maven project is located
-      #Task : Build Dockerfile
-      - name: Delete old Docker image using 
-        command: docker rmi -f abc-technologie-app-ansible-docker-k8s:latest
-        ignore_errors: yes
-      #Task : Build Dockerfile
-      - name: Build Docker image using 
-        command: docker build -t kassimabdi/abc-technologie-app-ansible-docker-k8s:latest /home/ubuntu/ansiblejob
+# - name: first play - Copy code and Build 
+#   hosts: worker
+#   gather_facts: false
+#   become: yes
+#   tasks:
+#       # Task 1: Cleanup any existing code from the previous deployment
+#       - name: Remove old application code
+#         file:
+#           path: /home/ubuntu/ansiblejob  # Path to the directory where code is copied
+#           state: absent  # This will remove the directory and its contents
+#       # Task 2: Copy the application code to the worker node
+#       - name: Copy application code to the worker
+#         copy:
+#           src: /var/lib/jenkins/workspace/ABC-technologie-ansible-docker-k8s/ # Local path on your Ansible control node (Jenkins server)
+#           dest: /home/ubuntu/ansiblejob # Destination on the worker node
+#       #Task 3 : package the maven project
+#       - name:  Package the project as a WAR file using Maven
+#         command: mvn package
+#         args:
+#           chdir: /home/ubuntu/ansiblejob  # the directory where the Maven project is located
+#       #Task : Build Dockerfile
+#       - name: Delete old Docker image using 
+#         command: docker rmi -f abc-technologie-app-ansible-docker-k8s:latest
+#         ignore_errors: yes
+#       #Task : Build Dockerfile
+#       - name: Build Docker image using 
+#         command: docker build -t kassimabdi/abc-technologie-app-ansible-docker-k8s:latest /home/ubuntu/ansiblejob
 
      
 
 
-- name: second play -Push Docker Image
-  hosts: worker
-  gather_facts: false
-  become: no
-  tasks:
-     # Push Docker image to Docker Hub
-      - name: Push Docker Image to Docker Hub using command module
-        command: docker push kassimabdi/abc-technologie-app-ansible-docker-k8s:latest
+# - name: second play -Push Docker Image
+#   hosts: worker
+#   gather_facts: false
+#   become: no
+#   tasks:
+#      # Push Docker image to Docker Hub
+#       - name: Push Docker Image to Docker Hub using command module
+#         command: docker push kassimabdi/abc-technologie-app-ansible-docker-k8s:latest
 
 
 - name: second play - Deploy Artifact to Kubernetes
