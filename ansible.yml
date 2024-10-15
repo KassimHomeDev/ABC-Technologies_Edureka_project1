@@ -40,7 +40,7 @@
 #         command: docker push kassimabdi/abc-technologie-app-ansible-docker-k8s:latest
 
 - name: second play - Deploy Artifact to Kubernetes
-  hosts: localhost
+  hosts: master
   become: yes
   tasks:
     # Deploy Artifact in Kubernetes && # setup service of the app
