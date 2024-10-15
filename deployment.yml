@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: kassimabdi/abc-technologie-app-ansible-docker-k8s  # the image url
+          image: kassimabdi/abc-technologie-app-ansible-docker-k8s:latest  # the image url
           ports:
             - containerPort: 8080  # Expose container port 8080
 
