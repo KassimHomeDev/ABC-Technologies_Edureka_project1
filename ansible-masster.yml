@@ -1,0 +1,8 @@
+---
+- name: second play - Deploy Artifact to Kubernetes
+  hosts: master
+  become: yes
+  tasks:
+    # Deploy Artifact in Kubernetes && setup service of the app
+    - name: Deploy Artifact in Kubernetes
+      command: kubectl apply -f deployment.yml
