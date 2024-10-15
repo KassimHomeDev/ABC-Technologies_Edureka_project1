@@ -4,10 +4,10 @@
   become: no
   tasks:
      - name: Deploy Artifact in Kubernetes
-      kubernetes.core.k8s:
-        state: present
-        namespace: default  # Specify your Kubernetes namespace
-        definition: "{{ lookup('file', 'deployment.yml') }}"
+        kubernetes.core.k8s:
+          state: present
+          namespace: default  # Specify your Kubernetes namespace
+          definition: "{{ lookup('file', 'deployment.yml') }}"
     # - name: Copy the deployment file to /home/ubuntu
     #   copy:
     #     src: /var/lib/jenkins/workspace/ABC-technologie-ansible-docker-k8s-master-job/deployment.yml # Correct the src path
