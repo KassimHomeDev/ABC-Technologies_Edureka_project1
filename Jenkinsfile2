@@ -6,7 +6,10 @@ pipeline {
     stages {
        stage('Run ansible playbook first tasks : first play - Copy code & Build  & Push Docker Image') {
             steps {
-                sh 'ansible-playbook -i ./host --check ansible.yml'
+                sh '''
+                    sudo chmod 644 host
+                    ansible-playbook -i ./host --check ansible.yml
+                '''
             }
         }
         stage('Run ansible master playbook: second play - Deploy Artifact to Kubernetes') {
