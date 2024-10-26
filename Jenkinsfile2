@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Run ansible master playbook: Deploy Artifact to Kubernetes') {
             steps {
-                    sh 'ansible-playbook -i ./hosts --list-hosts ansible-masster.yml'
+                    sh 'ansible-playbook -i ./hosts ansible-masster.yml'
             }
         }
     }
