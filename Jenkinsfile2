@@ -7,7 +7,7 @@ pipeline {
        stage('Run ansible playbook first tasks : first play - Copy code & Build  & Push Docker Image') {
             steps {
                 sh '''
-                    sudo chmod 644 host
+                    chmod 644 hosts
                     ansible-playbook -i ./hosts --check ansible.yml
                 '''
             }
