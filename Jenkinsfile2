@@ -1,26 +1,17 @@
 pipeline {
     agent any
-    tools {
-        maven 'Maven3.8.7'
-    }
     environment {
         ANSIBLE_HOST_KEY_CHECKING = 'False'  // Optional: Disables SSH host key checking
     }
     stages {
         stage('Run ansible playbook first tasks: Copy code, Build & Push Docker Image') {
             steps {
-                    sh '''
-                        chmod 644 hosts
-                        ansible-playbook -i ./hosts ansible.yml
-                    '''
+                    sh 'ansible-playbook -i ./hosts ansible.yml'
             }
         }
         stage('Run ansible master playbook: Deploy Artifact to Kubernetes') {
             steps {
-                    sh '''
-                        chmod 644 hosts
-                        ansible-playbook -i ./hosts ansible-masster.yml
-                    '''
+                    sh 'ansible-playbook -i ./hosts ansible-masster.yml'
             }
         }
     }
