@@ -1,5 +1,5 @@
 [master]
-localhost ansible_connection=local
+localhost ansible_connection=local ansible_user=ubuntu
 
 [worker]
 172.31.82.182 ansible_user=ubuntu
