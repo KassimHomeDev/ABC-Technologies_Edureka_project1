@@ -3,20 +3,29 @@ pipeline {
     tools {
         maven 'Maven3.8.7'
     }
+    environment {
+        ANSIBLE_HOST_KEY_CHECKING = 'False'  // Optional: Disables SSH host key checking
+    }
     stages {
-       stage('Run ansible playbook first tasks : first play - Copy code & Build  & Push Docker Image') {
+        stage('Run ansible playbook first tasks: Copy code, Build & Push Docker Image') {
             steps {
-                sh '''
-                    chmod 644 hosts
-                    ansible-playbook -i ./hosts --check ansible.yml
-                '''
+                sshagent(['ubuntu'], , ignoreMissing: true) { // Use the SSH credentials ID here
+                    sh '''
+                        chmod 644 hosts
+                        ansible-playbook -i ./hosts ansible.yml
+                    '''
+                }
             }
         }
-        stage('Run ansible master playbook: second play - Deploy Artifact to Kubernetes') {
+        stage('Run ansible master playbook: Deploy Artifact to Kubernetes') {
             steps {
-                sh 'ansible-playbook -i ./hosts --check ansible-masster.yml'
+                sshagent(['ubuntu'], , ignoreMissing: true) { // Use the SSH credentials ID here as well
+                    sh '''
+                        chmod 644 hosts
+                        ansible-playbook -i ./hosts ansible-masster.yml
+                    '''
+                }
             }
         }
-        
     }
 }
