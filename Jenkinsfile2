@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Run ansible playbook first tasks: Copy code, Build & Push Docker Image') {
             steps {
-                sshagent(['master-node'], ignoreMissing: true) { // Use the SSH credentials ID here
+                sshagent(['59d55631-c5db-4816-8faf-4421a62d14b0'], ignoreMissing: true) { // Use the SSH credentials ID here
                     sh '''
                         chmod 644 hosts
                         ansible-playbook -i ./hosts ansible.yml
@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Run ansible master playbook: Deploy Artifact to Kubernetes') {
             steps {
-                sshagent(['master-node'], ignoreMissing: true) { // Use the SSH credentials ID here as well
+                sshagent(['59d55631-c5db-4816-8faf-4421a62d14b0'], ignoreMissing: true) { // Use the SSH credentials ID here as well
                     sh '''
                         chmod 644 hosts
                         ansible-playbook -i ./hosts ansible-masster.yml
