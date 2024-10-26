@@ -1,6 +1,6 @@
 ---
 - name: second play - Deploy Artifact to Kubernetes
-  hosts: localhost
+  hosts: master
   gather_facts: false
   become: yes
   tasks:
