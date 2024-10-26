@@ -8,13 +8,13 @@ pipeline {
             steps {
                 sh '''
                     sudo chmod 644 host
-                    ansible-playbook -i ./host --check ansible.yml
+                    ansible-playbook -i ./hosts --check ansible.yml
                 '''
             }
         }
         stage('Run ansible master playbook: second play - Deploy Artifact to Kubernetes') {
             steps {
-                sh 'ansible-playbook -i ./host --check ansible-masster.yml'
+                sh 'ansible-playbook -i ./hosts --check ansible-masster.yml'
             }
         }
         
