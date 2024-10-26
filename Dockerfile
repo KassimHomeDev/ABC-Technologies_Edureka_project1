@@ -10,7 +10,7 @@ RUN apt-get update && \
 RUN mkdir /usr/local/tomcat
 
 # Download and extract the latest stable Tomcat 9 version
-RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.95/bin/apache-tomcat-9.0.95.tar.gz -O /tmp/apache-tomcat.tar.gz && \
+RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.96/src/apache-tomcat-9.0.96-src.tar.gz -O /tmp/apache-tomcat.tar.gz && \
     tar -xvzf /tmp/apache-tomcat.tar.gz -C /usr/local/tomcat --strip-components=1
 
 # Copy the WAR file from your local directory to Tomcat's webapps folder
