@@ -12,7 +12,7 @@
       # Task 2: Copy the application code to the worker node
       - name: Copy application code to the worker
         copy:
-          src: /var/lib/jenkins/workspace/ABC-technologie-ansible-docker-k8s/ # Local path on your Ansible control node (Jenkins server)
+          src: /var/lib/jenkins/workspace/ABC-Technologies_Edureka_project1_pipeline_ansible_docker_k8s/ # Local path on your Ansible control node (Jenkins server)
           dest: /home/ubuntu/ansiblejob # Destination on the worker node
       #Task 3 : package the maven project
       - name:  Package the project as a WAR file using Maven
