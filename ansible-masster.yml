@@ -2,7 +2,7 @@
 - name: second play - Deploy Artifact to Kubernetes
   hosts: master
   gather_facts: false
-  become: yes
+  become: non
   tasks:
     # - name: Copy the deployment file to /home/ubuntu
     #   copy:
