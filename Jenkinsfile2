@@ -1,13 +1,12 @@
 pipeline {
     agent any
-    environment {
-        ANSIBLE_HOST_KEY_CHECKING = 'False'  // Optional: Disables SSH host key checking
-    }
     stages {
-        stage('Run ansible master playbook: Deploy Artifact to Kubernetes') {
+         stage('Run ansible playbook first tasks: Copy code, Build & Push Docker Image') {
             steps {
                     sh 'ansible-playbook -i ./hosts ansible.yml'
             }
+        }
+        stage('Run ansible master playbook: Deploy Artifact to Kubernetes') {
             steps {
                     sh 'ansible-playbook -i ./hosts ansible-masster.yml'
             }
