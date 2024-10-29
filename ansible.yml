@@ -21,7 +21,7 @@
           chdir: /home/ubuntu/ansiblejob  # the directory where the Maven project is located
       #Task : Build Dockerfile
       - name: Delete old Docker image using 
-        command: docker rmi -f abc-technologie-app-ansible-docker-k8s:latest
+        command: docker rmi -f kassimabdi/abc-technologie-app-ansible-docker-k8s:latest
         ignore_errors: yes
       #Task : Build Dockerfile
       - name: Build Docker image using 
