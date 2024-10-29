@@ -16,8 +16,8 @@ RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.96/src/apache-tomcat-9.0.
 # Copy the WAR file from your local directory to Tomcat's webapps folder
 COPY /target/*.war /usr/local/tomcat/webapps/
 
-# Expose port 8080 for accessing the web application
-EXPOSE 8080
+# # Expose port 8080 for accessing the web application
+# EXPOSE 8080
 
-# Start Tomcat using the array format
-CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
+# # Start Tomcat using the array format
+# CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
